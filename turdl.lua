@@ -108,6 +108,12 @@ local function tunnel()
 	turtle.turnRight()
 end
 
+local function hole()
+	refuel()
+	dig()
+	turtle.forward()
+end
+
 for i = 1, dist do
 	tunnel()
 end
@@ -115,7 +121,7 @@ end
 turtle.turnLeft()
 
 for i = 1, space do
-	tunnel()
+	hole()
 end
 
 turtle.turnLeft()
@@ -127,7 +133,8 @@ end
 turtle.turnRight()
 
 for i = 1, space do
-	tunnel()
+	hole()
 end
 
 turtle.turnRight()
+hole()
