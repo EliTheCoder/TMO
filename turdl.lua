@@ -67,6 +67,7 @@ local function digDown()
 end
 
 local function refuel()
+	turtle.select(1)
 	if turtle.getFuelLevel() < 100 then
 		if turtle.getItemCount() > 1 then
 			turtle.refuel(1)
@@ -84,27 +85,43 @@ local function refuel()
 	end
 end
 
+local function store()
+	if turtle.getItemCount(16) 
+	turtle.select(2)
+	turtle.placeDown()
+	turtle.
+
+
+
+local function forward()
+	while not turtle.forward() do
+		turtle.attack()
+		sleep(1)
+	end
+end
+
 local function tunnel()
 	refuel()
+	store()
 	dig()
-	turtle.forward()
+	forward()
 	digUp()
 	digDown()
 	turtle.turnLeft()
 	dig()
-	turtle.forward()
+	forward()
 	digUp()
 	digDown()
 	turtle.turnRight()
 	turtle.turnRight()
-	turtle.forward()
+	forward()
 	dig()
-	turtle.forward()
+	forward()
 	digUp()
 	digDown()
 	turtle.turnLeft()
 	turtle.turnLeft()
-	turtle.forward()
+	forward()
 	turtle.turnRight()
 end
 
