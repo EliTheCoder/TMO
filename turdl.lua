@@ -8,10 +8,10 @@ local function dig()
 	if success then
 		if data.name == "ComputerCraft:CC-Turtle" then
 			print("tried to mine turtle")
-			local s, d = turtle.inspect()
+			local _, d = turtle.inspect()
 			while d.name == "ComputerCraft:CC-Turtle" do
 				sleep(2)
-				s, d = turtle.inspect()
+				_, d = turtle.inspect()
 			end
 		end
 	end
@@ -29,10 +29,10 @@ local function digUp()
 	if success then
 		if data.name == "ComputerCraft:CC-Turtle" then
 			print("tried to mine turtle")
-			local s, d = turtle.inspectUp()
+			local _, d = turtle.inspectUp()
 			while d.name == "ComputerCraft:CC-Turtle" do
 				sleep(2)
-				s, d = turtle.inspectUp()
+				_, d = turtle.inspectUp()
 			end
 		end
 	end
@@ -50,10 +50,10 @@ local function digDown()
 	if success then
 		if data.name == "ComputerCraft:CC-Turtle" then
 			print("tried to mine turtle")
-			local s, d = turtle.inspectDown()
+			local _, d = turtle.inspectDown()
 			while d.name == "ComputerCraft:CC-Turtle" do
 				sleep(2)
-				s, d = turtle.inspectDown()
+				_, d = turtle.inspectDown()
 			end
 		end
 	end
@@ -130,32 +130,41 @@ local function tunnel()
 	turtle.turnRight()
 end
 
+local function smallTunnel()
+	refuel()
+	store()
+	dig()
+	forward()
+	digUp()
+	digDown()
+end
+
 local function hole()
 	refuel()
 	dig()
 	turtle.forward()
 end
 
-for i = 1, dist do
+for _ = 1, dist do
 	tunnel()
 end
 
 turtle.turnLeft()
 
-for i = 1, space do
-	hole()
+for _ = 1, space do
+	smallTunnel()
 end
 
 turtle.turnLeft()
 
-for i = 1, dist do
+for _ = 1, dist do
 	tunnel()
 end
 
 turtle.turnRight()
 
-for i = 1, space do
-	hole()
+for _ = 1, space do
+	smallTunnel()
 end
 
 turtle.turnRight()
