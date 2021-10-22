@@ -86,12 +86,17 @@ local function refuel()
 end
 
 local function store()
-	if turtle.getItemCount(16) 
+	if turtle.getItemCount(16) == 0 then
+		return
+	end
+	print("storing items")
 	turtle.select(2)
 	turtle.placeDown()
-	turtle.
-
-
+	for i = 3, 16 do
+		turtle.select(i)
+		turtle.dropDown()
+	end
+end
 
 local function forward()
 	while not turtle.forward() do
