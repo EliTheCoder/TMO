@@ -92,7 +92,9 @@ local function line()
 end
 
 while true do
+	local length = 0
 	while true do
+		length = length + 2
 		line()
 		turtle.turnLeft()
 		forward()
@@ -107,33 +109,19 @@ while true do
 		if not s then break end
 	end
 	print("turning around")
-	turtle.turnRight()
-	forward()
-	turtle.turnLeft()
-	while true do
-		line()
-		turtle.turnRight()
+	for _ = 0, length do
 		forward()
-		turtle.turnRight()
-		forward()
-		line()
-		turtle.turnLeft()
-		forward()
-		turtle.turnLeft()
-		forward()
-		local s = turtle.inspectDown()
-		if not s then break end
 	end
+	turtle.turnLeft()
 	store()
 	pullFuel()
 	turtle.turnLeft()
 	forward()
 	turtle.turnRight()
-	local os, od = turtle.inspectDown()
-	local _, d = os, od
+	local _, d = turtle.inspectDown()
 	print("waiting for growth")
-	while d.metadata == od.metadata and d.metadata < 7 do
-		sleep(1)
+	while d.metadata < 7 do
+		sleep(5)
 		_, d = turtle.inspectDown()
 	end
 end
