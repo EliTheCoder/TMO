@@ -4,10 +4,10 @@ local function digDown()
 	if success then
 		if data.name == "ComputerCraft:CC-Turtle" then
 			print("tried to mine turtle")
-			local s, d = turtle.inspectDown()
+			local _, d = turtle.inspectDown()
 			while d.name == "ComputerCraft:CC-Turtle" do
 				sleep(2)
-				s, d = turtle.inspectDown()
+				_, d = turtle.inspectDown()
 			end
 		end
 	end
@@ -51,7 +51,7 @@ local function pullFuel()
 	turtle.suckUp(1)
 	refuel()
 end
-	
+
 local function replant()
 	local slot = 1
 	for i = 1, 16 do
@@ -83,6 +83,7 @@ local function line()
 		end
 		if d.metadata >= 7 then
 			digDown()
+			replant()
 		end
 		forward()
 	end
@@ -129,11 +130,10 @@ while true do
 	local os, od = turtle.inspectDown()
 	local _, d = os, od
 	print("waiting for growth")
-	while d.metadata ~= od.metadata and d.metadata < 7 do
+	while d.metadata == od.metadata and d.metadata < 7 do
 		sleep(1)
 		_, d = turtle.inspectDown()
 	end
 end
 
 
-	
