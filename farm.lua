@@ -93,6 +93,9 @@ end
 
 while true do
 	local length = 0
+	while redstone.getInput("top") do
+		sleep(0.5)
+	end
 	while true do
 		length = length + 2
 		line()
@@ -109,6 +112,7 @@ while true do
 		if not s then break end
 	end
 	print("turning around")
+	turtle.turnRight()
 	for _ = 0, length do
 		forward()
 	end
@@ -119,7 +123,7 @@ while true do
 	forward()
 	turtle.turnRight()
 	local _, d = turtle.inspectDown()
-	print("waiting for growth")
+	print("waiting for full growth")
 	while d.metadata < 7 do
 		sleep(5)
 		_, d = turtle.inspectDown()
