@@ -48,6 +48,7 @@ local function store()
 end
 
 local function pullFuel()
+	turtle.select(1)
 	turtle.suckUp(1)
 	refuel()
 end
