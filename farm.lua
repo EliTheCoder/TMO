@@ -1,5 +1,6 @@
 ---@diagnostic disable: undefined-global
 local function digDown()
+	turtle.select(2)
 	local success, data = turtle.inspectDown()
 	if success then
 		if data.name == "ComputerCraft:CC-Turtle" then
@@ -41,7 +42,7 @@ end
 
 local function store()
 	print("storing items")
-	for i = 3, 16 do
+	for i = 2, 16 do
 		turtle.select(i)
 		turtle.dropUp()
 	end
