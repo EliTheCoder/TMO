@@ -52,6 +52,20 @@ local function pullFuel()
 	refuel()
 end
 	
+local function replant()
+	local slot = 1
+	for i = 1, 16 do
+		turtle.select(i)
+		if turtle.getItemCount() > 0 then
+			slot = i
+		end
+	end
+	turtle.select(slot)
+	turtle.placeDown()
+	if turtle.getItemCount() > 0 then
+		turtle.dropDown()
+	end
+end
 
 local function forward()
 	while not turtle.forward() do
@@ -89,6 +103,7 @@ while true do
 		local s = turtle.inspectDown()
 		if not s then break end
 	end
+	print("turning around")
 	turtle.turnRight()
 	forward()
 	turtle.turnLeft()
@@ -108,9 +123,13 @@ while true do
 	end
 	store()
 	pullFuel()
+	turtle.turnLeft()
+	forward()
+	turtle.turnRight()
 	local os, od = turtle.inspectDown()
 	local _, d = os, od
-	while d ~= od and d.metadata < 7 do
+	print("waiting for growth")
+	while d.metadata ~= od.metadata and d.metadata < 7 do
 		sleep(1)
 		_, d = turtle.inspectDown()
 	end
