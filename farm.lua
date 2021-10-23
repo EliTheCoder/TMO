@@ -76,6 +76,13 @@ local function forward()
 	end
 end
 
+local function back()
+	while not turtle.back() do
+		turtle.attack()
+		sleep(1)
+	end
+end
+
 local function line()
 	refuel()
 	while true do
@@ -118,7 +125,9 @@ while true do
 	end
 	turtle.turnLeft()
 	store()
+	forward()
 	pullFuel()
+	back()
 	turtle.turnLeft()
 	forward()
 	turtle.turnRight()
