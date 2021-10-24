@@ -50,7 +50,9 @@ end
 
 local function pullFuel()
 	turtle.select(1)
-	turtle.suckUp(1)
+	while turtle.getItemCount() < 64 and turtle.getFuelLevel() <= turtle.getFuelLimit() and turtle.suckUp(1) do
+		sleep(0.5)
+	end
 	refuel()
 end
 
