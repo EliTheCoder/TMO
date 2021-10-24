@@ -1,6 +1,6 @@
 ---@diagnostic disable: undefined-global
 local dist = 160
-local turts = 10
+local turts = 1
 local space = turts*3
 
 local function dig()
@@ -96,10 +96,19 @@ local function store()
 		turtle.select(i)
 		turtle.dropDown()
 	end
+	turtle.select(2)
+	turtle.digDown()
 end
 
 local function forward()
 	while not turtle.forward() do
+		turtle.attack()
+		sleep(1)
+	end
+end
+
+local function back()
+	while not turtle.back() do
 		turtle.attack()
 		sleep(1)
 	end
@@ -124,10 +133,8 @@ local function tunnel()
 	forward()
 	digUp()
 	digDown()
+	back()
 	turtle.turnLeft()
-	turtle.turnLeft()
-	forward()
-	turtle.turnRight()
 end
 
 local function smallTunnel()
