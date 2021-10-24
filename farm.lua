@@ -131,11 +131,11 @@ while true do
 	turtle.turnLeft()
 	forward()
 	turtle.turnRight()
-	local _, d = turtle.inspectDown()
+	local s, d = turtle.inspectDown()
 	print("waiting for full growth")
-	while d.metadata < 7 do
+	while not s or d.metadata < 7 do
 		sleep(5)
-		_, d = turtle.inspectDown()
+		s, d = turtle.inspectDown()
 	end
 end
 
